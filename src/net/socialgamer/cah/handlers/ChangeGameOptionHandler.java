@@ -51,6 +51,7 @@ public class ChangeGameOptionHandler extends GameWithPlayerHandler {
                 Integer.parseInt(cardSetId)));
           }
         }
+        final int blanksLimit = Integer.parseInt(request.getParameter(AjaxRequest.BLANKS_LIMIT));
         final String oldPassword = game.getPassword();
         String password = request.getParameter(AjaxRequest.PASSWORD);
         if (password == null) {
@@ -63,7 +64,7 @@ public class ChangeGameOptionHandler extends GameWithPlayerHandler {
         if (null != useTimerString && !"".equals(useTimerString)) {
           useTimer = Boolean.valueOf(useTimerString);
         }
-        game.updateGameSettings(scoreLimit, playerLimit, cardSets, password, useTimer);
+        game.updateGameSettings(scoreLimit, playerLimit, cardSets, blanksLimit, password, useTimer);
 
         // only broadcast an update if the password state has changed, because it needs to change
         // the text on the join button and the sort order
