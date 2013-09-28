@@ -113,6 +113,32 @@ cah.longpoll.EventHandlers[cah.$.LongPollEvent.CHAT] = function(data) {
   }
 };
 
+cah.longpoll.EventHandlers[cah.$.LongPollEvent.ACTION] = function(data) {
+  var clazz = undefined;
+  var from = data[cah.$.LongPollResponse.FROM];
+  var show = !cah.ignoreList[from];
+  var game = null;
+  if (data[cah.$.LongPollResponse.FROM_ADMIN]) {
+    clazz = "admin";
+    show = true;
+  }
+  if (data[cah.$.LongPollResponse.WALL]) {
+    // treat these specially
+    cah.log.everyWindow(
+        "**" + from + " " + data[cah.$.LongPollResponse.MESSAGE] + "**", clazz);
+  } else {
+    if (cah.$.LongPollResponse.GAME_ID in data) {
+      game = data[cah.$.LongPollResponse.GAME_ID];
+    }
+
+    // don't display our own chat
+    if (from != cah.nickname && show) {
+      cah.log.status_with_game(game, "*" + data[cah.$.LongPollResponse.FROM] + " "
+          + data[cah.$.LongPollResponse.MESSAGE], clazz);
+    }
+  }
+};
+
 cah.longpoll.EventHandlers[cah.$.LongPollEvent.GAME_LIST_REFRESH] = function(data) {
   cah.GameList.instance.update();
 };
