@@ -37,8 +37,7 @@ Administration tools.
 RequestWrapper wrapper = new RequestWrapper(request);
 String remoteAddr = wrapper.getRemoteAddr();
 // TODO better access control than hard-coding IP addresses.
-if (!(remoteAddr.equals("0:0:0:0:0:0:0:1") || remoteAddr.equals("127.0.0.1") ||
-    remoteAddr.equals("98.248.33.90") || remoteAddr.equals("207.161.39.198"))) {
+if (!(remoteAddr.equals("0:0:0:0:0:0:0:1") || remoteAddr.equals("127.0.0.1"))) {
   response.sendError(403, "Access is restricted to known hosts");
   return;
 }
@@ -128,7 +127,7 @@ if (color != null) {
 <label for="draw">Draw</label><input type="text" id="draw" name="draw" size="3" value="0" />
 <br/>
 <label for="watermark_b">Watermark</label>
-<input type="text" id="watermark_b" name="watermark" size="3" maxlength="5" value="<%= watermark %>" />
+<input type="text" id="watermark_b" name="watermark" size="50" value="<%= watermark %>" />
 <br/>
 <input type="submit" value="Add card" />
 </form>
@@ -138,7 +137,7 @@ if (color != null) {
 <label for="white_text">Card Text</label><input type="text" id="white_text" name="text" size="150" />
 <br/>
 <label for="watermark_w">Watermark</label>
-<input type="text" id="watermark_w" name="watermark" size="3" maxlength="5" value="<%= watermark %>" />
+<input type="text" id="watermark_w" name="watermark" size="50" value="<%= watermark %>" />
 <br/>
 <input type="submit" value="Add card" />
 </form>

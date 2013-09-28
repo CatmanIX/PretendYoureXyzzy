@@ -41,13 +41,12 @@ Administration tools.
 RequestWrapper wrapper = new RequestWrapper(request);
 String remoteAddr = wrapper.getRemoteAddr();
 //TODO better access control than hard-coding IP addresses.
-/*
-if (!(remoteAddr.equals("0:0:0:0:0:0:0:1") || remoteAddr.equals("127.0.0.1") ||
-    remoteAddr.startsWith("10.") || remoteAddr.equals("98.210.81.226"))) {
+
+if (!(remoteAddr.equals("0:0:0:0:0:0:0:1") || remoteAddr.equals("127.0.0.1"))) {
   response.sendError(403, "Access is restricted to known hosts");
   return;
 }
-*/
+
 List<String> messages = new ArrayList<String>();
 
 Session hibernateSession = HibernateUtil.instance.sessionFactory.openSession();
