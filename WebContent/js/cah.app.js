@@ -154,19 +154,14 @@ function chatsubmit_click(game_id, parent_element) {
         cah.log.status_with_game(game_id, "<" + cah.nickname + "> " + text);
         break;
       case 'me':
-          if (game_id !== null) {
-            ajax = cah.Ajax.build(cah.$.AjaxOperation.GAME_ACTION).withGameId(game_id);
-          } else {
-            ajax = cah.Ajax.build(cah.$.AjaxOperation.ACTION);
-          }
-          ajax = ajax.withMessage(text);
-          cah.log.status_with_game(game_id, "*" + cah.nickname + " " + text);
-          break;
-      /*case 'me':
-        // TODO when I get multiple channels working, this needs to know active and pass it
-        cah.Ajax.build(cah.$.AjaxOperation.ACTION).withMessage(text).run();
-        cah.log.status("*" + cah.nickname + " " + text);
-        break;*/
+        if (game_id !== null) {
+          ajax = cah.Ajax.build(cah.$.AjaxOperation.GAME_ACTION).withGameId(game_id);
+        } else {
+          ajax = cah.Ajax.build(cah.$.AjaxOperation.ACTION);
+        }
+        ajax = ajax.withMessage(text);
+        cah.log.status_with_game(game_id, "*" + cah.nickname + " " + text);
+        break;
       case 'wall':
         ajax = cah.Ajax.build(cah.$.AjaxOperation.CHAT).withWall(true).withMessage(text);
         break;
