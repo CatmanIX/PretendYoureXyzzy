@@ -10,12 +10,14 @@ public class Handlers {
 
   static {
     LIST = new HashMap<String, Class<? extends Handler>>();
+    LIST.put(ActionHandler.OP, ActionHandler.class);
     LIST.put(AdminSetVerboseLog.OP, AdminSetVerboseLog.class);
     LIST.put(BanHandler.OP, BanHandler.class);
     LIST.put(ChangeGameOptionHandler.OP, ChangeGameOptionHandler.class);
     LIST.put(ChatHandler.OP, ChatHandler.class);
     LIST.put(CreateGameHandler.OP, CreateGameHandler.class);
     LIST.put(FirstLoadHandler.OP, FirstLoadHandler.class);
+    LIST.put(GameActionHandler.OP, GameActionHandler.class);
     LIST.put(GameChatHandler.OP, GameChatHandler.class);
     LIST.put(GameListHandler.OP, GameListHandler.class);
     LIST.put(GetCardsHandler.OP, GetCardsHandler.class);

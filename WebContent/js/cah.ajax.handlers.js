@@ -102,6 +102,14 @@ cah.ajax.SuccessHandlers[cah.$.AjaxOperation.GAME_CHAT] = function(data) {
   // pass
 };
 
+cah.ajax.SuccessHandlers[cah.$.AjaxOperation.ACTION] = function(data) {
+  // pass
+};
+
+cah.ajax.SuccessHandlers[cah.$.AjaxOperation.GAME_ACTION] = function(data) {
+  // pass
+};
+
 cah.ajax.SuccessHandlers[cah.$.AjaxOperation.LOG_OUT] = function(data) {
   window.location.reload();
 };
